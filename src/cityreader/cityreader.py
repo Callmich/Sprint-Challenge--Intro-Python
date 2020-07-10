@@ -8,6 +8,9 @@ class City:
     self.name = name
     self.lat = lat
     self.lon = lon
+  
+  def __str__(self):
+    return F'{self.name}'
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -29,15 +32,15 @@ def cityreader(cities=[]):
   # For each city record, create a new City instance and add it to the 
   # `cities` list
   
-  with open("cityreader/cities.csv", "r") as cvsFile:
-    csvReader = csv.reader(csvFile, delimiter=',')
+  with open("src/cityreader/cities.csv", "r") as cvsFile:
+    csvReader = csv.reader(cvsFile, delimiter=',')
     lineCount = 0
     for row in csvReader:
-      if lineCount == 0:
-        pass
-      else:
-        cities.append(City(row[0], row[3], row[4]))
-        lines += 1
+      # if lineCount == 0:
+      #   pass
+      # else:
+      cities.append(City(row[0], row[3], row[4]))
+      lineCount += 1
     
     return cities
 
